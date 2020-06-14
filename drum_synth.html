@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<link href="css/rumor.css" rel="stylesheet" type="text/css" />
+<link href="css/picture.css" rel="stylesheet" type="text/css" />
+<html>
+
+    <head>
+		<style>
+		</style>
+
+			<meta charset="utf-8" />
+
+			<title>RUMOR OF SMOKE |DRUM SYNTH PROTOTYPE</title>
+
+	</head>
+
+<body id="body">
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="line_text"> <a href="http://electrictonemusic.com">electric tone</a></li>
+			<li class="line_text"><a href="about.html">about</a></li>
+			<li class="line_text"><a href="index.html">index project</a></li>
+			<li class="line_text"><a href="http://smokingtip.wordpress.com/">blob</a></li>
+		</ul>
+	</div>
+	<div id="main_body">
+	<h1 class="line_text"> DRUM SYNTH </h1>
+		<p>		
+			  A drum synth project commissioned for someone in Honk Kong.</br></br>
+
+			<a 	href="img/stand_alone/drum_synth/dr_01.jpg" > <img <img src="img/stand_alone/drum_synth/dr_01.jpg" 
+				width="600" height="400"  alt="dr_01" /></a>
+				</br></br>
+			
+			The idea was to make a modernised but not a copy of the drum module "syncussion". 
+			The project needed to stay "analog" as much as possible for all the signal path. Amicrocontroller
+			is present to make all the for the voice. </br></br>
+			
+			<a 	href="img/stand_alone/drum_synth/syncussion.jpg" > <img <img src="img/stand_alone/drum_synth/syncussion.jpg" 
+				width="600" height="400"  alt="syncussion" /></a>
+				</br></br>
+				
+			what it is shown is the proof of concept, the stage that comfirn or deny the all idea, before going into PCBs.
+			Not really a clever idea at the time as all	the wire introduces noises and weird behavior.</br></br>
+			
+			<a 	href="img/stand_alone/drum_synth/dr_03.jpg" > <img <img src="img/stand_alone/drum_synth/dr_03.jpg" 
+				width="600" height="400"  alt="dr_03" /></a></br>
+					<a 	href="img/stand_alone/drum_synth/dr_02.jpg" > <img <img src="img/stand_alone/drum_synth/dr_02.jpg" 
+				width="600" height="400"  alt="dr_02" /></a></br>
+				
+			The all thing was really an analog synth designed toward percussion role. The VCO had an envelope linked to it, the filter
+			had the three traditional outputs (BP,LP,HP), there was a lfo modulation linkable to the VCA/VCO/VCF.
+			</br></br>
+			
+			The first envelope (the VCO envelope) had an atternuver </br>
+		</p>
+			<div id="youtube_video">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/CxNaxXATqfc" frameborder="0" allowfullscreen></iframe>
+			</div></br>
+		<p>
+			while the second had an interesting mode which combined a low random voltage with the envelope creating a "glitched envelope".
+			This last mode wasn't very suited for percussion type of sound, but interesting for more wacky-hippie sound</br>
+		</p>	
+			<div id="youtube_video">
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/58KChQq_ZPA" frameborder="0" allowfullscreen></iframe>
+			</div></br>
+			
+		<p>
+			Many additional features were added into the microcontroller and controlled by MIDI message. These fonctions were: probability gate, 
+			random sequencer, random pattern sequencer and others that I can't remember. Most were derived from idea developed from the synthi biscuit.
+			Not only that, the microcontroller were also here to convert midi note to CV for the VCOs and manage the switching of the LFO waveforms.  
+			It also allowed the synth to be trigger but midi note (only gate information triggered the synth)</br></br>
+			
+			it took a large amount of time to get working, many things were to be fixed, changed or modified. Also the result was tending more toward 
+			randomish synth than pure drum synth (that was also a wish to not create only a drum synth).</br></br>
+			
+			The modulation source could have been done in sofware and outputed via PWM or 8bit DAC withtout being an issue and avoiding such complex circuitry. 
+			The VCO could also be made in digital, the all thing could have been made in digital !! But there's that fetishm about "analog" that most people have where
+			I'm more interested in unseen, unheard and unused idea that digital can offer. 
+			</br></br>
+		</p>
+			<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/283235292&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+			</br>
+			<a href="schema/stand_alone/drum_synth/drum_synth_sch.pdf"><strong>SCHEMATIC </strong> </a></br>
+
+		
+				
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>
+
+

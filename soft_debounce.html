@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<link href="css/rumor.css" rel="stylesheet" type="text/css" />
+<link href="css/picture.css" rel="stylesheet" type="text/css" />
+<html>
+
+    <head>
+		<style>
+		</style>
+
+			<meta charset="utf-8" />
+
+			<title>RUMOUR OF SMOKE  | SWITCH DEBOUNCE AND USER INPUT </title>
+
+	</head>
+
+<body id="body">
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="line_text"> <a href="http://electrictonemusic.com">electric tone</a></li>
+			<li class="line_text"><a href="about.html">about</a></li>
+			<li class="line_text"><a href="index.html">index project</a></li>
+			<li class="line_text"><a href="http://smokingtip.wordpress.com/">blob</a></li>
+		</ul>
+	</div>
+	<div id="main_body">
+	<h1 class="line_text">	 SWITCH DEBOUNCE AND USER INPUT </h1>
+	<p>	
+	
+		Here's a way to deal with debounce and timing the switches linked to microcontroller port.
+		it is mostly a re-write in C of the Mutable instrument UI interface.
+			</br></br>
+		
+		The key in here is to do stuff upon the release of the button and to time how long 
+		the button has been pressed. This code runs into a 1Khz interrupt to deal with user inputs. 
+			
+			</br></br>
+	</p>
+	
+	
+<div id="div_code">			
+<pre><code>
+#define DEBOUNCE			50
+#define SW_EVENT			0
+#define ADC_EVENT 			1
+#define MAX_BUTTON			7
+
+
+// store button state, 0 or 1
+uint8_t state[MAX_BUTTON]; 	
+//debounce counter 			
+uint16_t press_timer[MAX_BUTTON];
+//store the time		
+uint16_t press_time[MAX_BUTTON]; 
+// if the button aren't linked to consecutive pins, used masks		
+uint16_t gpio_mask[4];						
+	1Khz_interupt
+	{
+	
+	for(uint8_t i=0; i<7; i++)
+	 {
+		// are we in 0 state 
+		if(!state[i])			
+		{
+			//first we read if the button is pressed, is it pressed ?
+			// otherwise, there's a bounce so 0 it out. 
+			if(!(GPIOB->IDR & gpio_mask[i]))  
+			{
+				//increment debounce counter
+				press_timer[i]++;
+				//are we above the threshold ? we are ! 						
+				if(press_timer[i] >= DEBOUNCE_SW)		  
+				{
+					//becomes one	
+					state[i]++;	
+					//reset debounce_counter						
+					press_timer[i] = 0; 
+					//store time for next comparasion
+					press_time[i] = ms; 				
+				}
+			}
+		// bounce or nothing, reset	
+		else press_timer[i] = 0; 						
+		}
+		// have we recorded a valid pressed ? 
+		else if(state[i])								
+		{
+			//has the button been released ? (pin high)
+			if(GPIOB->IDR & gpio_mask[i])				
+			{
+				//same principle for the debounce, switches bounce in the both way. 
+				press_timer[i]++; 					 
+				if(press_timer[i] >= DEBOUNCE_SW)	
+				{
+					//record the change, state = 0
+					state[i]--;	
+					// create a struct to store the data for next 
+					//processing, here we label it as a switch				
+					event.type = SW_EVENT; 	
+					//which switch ? 
+					event.id = i; 	
+					// the time it has been down
+					event.data = ms - press_time[i]; 	
+					//stock into the circular buffer
+					push_user_event(&event);
+					//reset debounce timer
+					press_timer[i] = 0; 				
+				}
+			}
+			//still pressed, ignore and reset
+			else press_timer[i] = 0; 					
+		}
+	 
+	 
+	 }
+	}
+
+</pre></code>
+</div>	
+		<p>
+		the input data is stored into a ciurcular buffer containing struct data type </br></br>
+		</p>
+<div id="div_code">			
+<pre><code>
+#define MAX_EVENT_FIFO	16
+
+uint8_t ptr_event_read, ptr_event_write, event_fifo_counter; 
+USER_EVENT event_fifo[MAX_EVENT_FIFO_SIZE];
+
+//retrieve data from the buffer
+void get_user_event(USER_EVENT *event)
+{
+	if(event_fifo_counter >0)
+	{
+		event->type 	= event_fifo[ptr_event_read].type;
+		event->id 		= event_fifo[ptr_event_read].id;
+		event->data 	= event_fifo[ptr_event_read].data; 
+			
+		
+		ptr_event_read++; 
+		if(ptr_event_read >= MAX_EVENT_FIFO_SIZE) ptr_event_read = 0; 
+		
+		event_fifo_counter--;
+	}
+}
+//stock data to the buffer
+void push_user_event(USER_EVENT *event)
+{
+	if(event_fifo_counter < MAX_EVENT_FIFO_SIZE)
+	{
+		event_fifo[ptr_event_write].type	= event->type;
+		event_fifo[ptr_event_write].id 		= event->id; 
+		event_fifo[ptr_event_write].data 	= event->data; 		
+		
+		ptr_event_write++; 
+		if(ptr_event_write >= MAX_EVENT_FIFO_SIZE) ptr_event_write = 0; 
+		
+		event_fifo_counter++;
+	}
+}
+
+</pre></code>
+</div>
+
+<p>
+the processing is dealt with in	the main loop </br></br>
+</p>
+<div id="div_code">			
+<pre><code>
+void user_event_do(void)		
+{
+	static USER_EVENT event;
+	 
+	// is there some event to process ? 	
+	if(event_fifo_counter)			 
+	{
+		// copy struct into local one
+		get_user_event(&event); 
+		
+		switch(event.type)
+		{
+			case SW_EVENT:
+				//which switch ? 
+				switch(event.id)
+				{
+					case 0:
+					//long press
+					if(event.data >= PRESS_LONG_DURATION) action_1(); 
+					//short press
+					else action_2();
+					break;
+					
+					case 1:
+					if(event.data >= PRESS_LONG_DURATION) action_3(); 
+					else action_4();
+					break;
+				}
+			break; 
+			
+			
+			case ADC_EVENT:
+				switch(event.id)
+				{
+					case 0:
+					break; 
+					
+					case 1:
+					break; 
+					
+					default:break; 
+				}
+			break;
+			
+			
+		}
+		
+		
+
+	
+	}
+} 
+
+ 
+		
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>
+
+

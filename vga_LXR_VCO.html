@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<link href="css/rumor.css" rel="stylesheet" type="text/css" />
+<link href="css/picture.css" rel="stylesheet" type="text/css" />
+<html>
+
+    <head>
+		<style>
+		</style>
+
+			<meta charset="utf-8" />
+
+			<title>RUMOUR OF SMOKE  |  VGA AUDIO MODULATION </title>
+
+	</head>
+
+<body id="body">
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="line_text"> <a href="http://electrictonemusic.com">electric tone</a></li>
+			<li class="line_text"><a href="about.html">about</a></li>
+			<li class="line_text"><a href="index.html">index project</a></li>
+			<li class="line_text"><a href="http://smokingtip.wordpress.com/">blob</a></li>
+		</ul>
+	</div>
+	<div id="main_body">
+	<h1 class="line_text">LZX Industries CADET VCO</h1>
+	
+		<p>
+		The XR2206 gave poor results at high frequencies with reduced amplitude and noises. The trimmers were a bit of a pain to set as well. I was not very pleased with the result.</br>
+		I decided to use the open-source
+		<a href=" https://www.lzxindustries.net/shop/product/lzxcadt9-cadet-ix-voltage-controlled-oscillator-2149?category=7"> Lzx industries cadet vco </a>.
+		 I made a PCB with 0805 smd componements and through-hole transistors for matching them (boring). 
+		</br></br>
+		
+			<a 	href="img\video_circuit\vga_lxr_vco\lzx_vco_sm.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\lzx_vco_sm.jpg"
+				width="550" height="550"  alt="" /></a>
+				</br></br>
+				
+		I added to the circuit inverted outputs for both original outputs (square and triangle). The LM6172 were quite sensitive to what seems to be the ringing of the 74HC14 and produce 
+		noise at 42MHZ. A 10pf cap in the feedback loop solved the issue. 	</br></br>
+		
+
+		<img <img src="img\video_circuit\vga_lxr_vco\sq_noise_0.png" /></img>
+		<img <img src="img\video_circuit\vga_lxr_vco\sq_clean.png" /> </img>		
+		<img <img src="img\video_circuit\vga_lxr_vco\tr_noise.png" /> </img>
+		<img <img src="img\video_circuit\vga_lxr_vco\tr_clean.png" /> </img>	
+		</br></br>
+		
+		
+		A test jig was made for testing two vco and observe the modulation between them. I used the <a href="file:///C:/Users/julien/Documents/HTLM/web/rumorofsmoke/video_extractor_tool.html "> video extractor</a>  
+		to provide proper syncs and video signal for modulation. It gave great visuals and patterns, alhough black and white (no video encoder). The vco can be modulated by video signal as well (picture 3 and 4) which give 
+		me the idea of a potential video extractor to modulate the VCOs.	</br></br>
+		
+		
+			<a 	href="img\video_circuit\vga_lxr_vco\test_jig_0.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\test_jig_0.jpg"
+				width="288" height="512"  alt="" /></a>
+				</br></br>
+				
+					<a 	href="img\video_circuit\vga_lxr_vco\test_jig_1.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\test_jig_1.jpg"
+				width="600" height="500"  alt="" /></a>
+				</br></br>
+		
+			<a 	href="img\video_circuit\vga_lxr_vco\pattern_0.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\pattern_0.jpg"
+				width="600" height="500"  alt="" /></a>
+				</br></br>
+				
+					<a 	href="img\video_circuit\vga_lxr_vco\pattern_1.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\pattern_1.jpg"
+				width="600" height="500"  alt="" /></a>
+				</br></br>
+				
+					<a 	href="img\video_circuit\vga_lxr_vco\pattern_2.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\pattern_2.jpg"
+				width="600" height="500"  alt="" /></a>
+				</br></br>
+							
+					<a 	href="img\video_circuit\vga_lxr_vco\pattern_4.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\pattern_4.jpg"
+				width="600" height="500"  alt="" /></a>
+				</br></br>
+				
+					<a 	href="img\video_circuit\vga_lxr_vco\pattern_5.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\pattern_5.jpg"
+				width="600" height="500"  alt="" /></a>
+				</br></br>
+				
+					<a 	href="img\video_circuit\vga_lxr_vco\pattern_6.jpg" >
+				<img <img src="img\video_circuit\vga_lxr_vco\pattern_6.jpg"
+				width="600" height="500"  alt="" /></a>
+				</br></br>
+	
+		</p>
+			
+			</br></br>
+			</br></br>
+			</br></br>
+		
+			
+				
+				
+					
+		
+			
+			
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>
+
+

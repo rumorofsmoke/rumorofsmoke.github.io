@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<link href="css/rumor.css" rel="stylesheet" type="text/css" />
+<link href="css/picture.css" rel="stylesheet" type="text/css" />
+<html>
+
+    <head>
+		<style>
+		</style>
+
+			<meta charset="utf-8" />
+
+			<title>RUMOUR OF SMOKE  | ANALOG VGA SYNC AND VIDEO BLANKING CIRCUIT </title>
+
+	</head>
+
+<body id="body">
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="line_text"> <a href="http://electrictonemusic.com">electric tone</a></li>
+			<li class="line_text"><a href="about.html">about</a></li>
+			<li class="line_text"><a href="index.html">index project</a></li>
+			<li class="line_text"><a href="http://smokingtip.wordpress.com/">blob</a></li>
+		</ul>
+	</div>
+	<div id="main_body">
+	<h1 class="line_text"> ANALOG VGA SYNC AND VIDEO BLANKING CIRCUIT </h1>
+	<p>	
+			This circuit is an idea for a possible Video synth </br></br>
+			
+			It creates the blanking period needed for the VGA color signals to be properly read 
+			from the vga controller screen. <br></br>
+			
+			documentation about VGA timming on the internet is rather confusing. Many diagrams
+			show the vsync being a low pulse whereas at the video card output it is the oposite. 
+			<br></br>
+			
+			This circuit requires external vertical sync and horizontal to build the blanking period.
+			Of course, the ideal design would be self-sufficient and generate its own timming. This 
+			idea was to verify the circuit only. <br></br>
+			
+		
+				<a 	href="schema/video_sch/vga_sync/vga_sync_sch.jpg" >
+				<img <img src="schema/video_sch/vga_sync/vga_sync_sch.jpg"
+				width="1300" height="850" alt="vga_sch" /></a>
+				</br></br>
+				
+			Only tested with LT spice with "ideal" models. I think a cheaper comparator that the LTC 6752
+			would be enough. It seems that the LTC6752 is quite overkill for the application. </br></br>
+			
+			the diagram below shows the different signals for the horizontal period (we could also call it
+			a "scanline" period as well). We may notice that the oscillator (the sinewave) is free-running,
+			we could freeze it during the blanking to have it in sync with the system. 
+
+				
+				<a 	href="img/video_circuit/vga_sync/vga_sync_0.jpg" >
+				<img <img src="img/video_circuit/vga_sync/vga_sync_0.jpg"
+				width="1300" height="850" alt="vga_graph" /></a>
+				</br></br>
+				Signals for one frame </br></br>
+				<a 	href="img/video_circuit/vga_sync/vga_sync_1.jpg" >
+				<img <img src="img/video_circuit/vga_sync/vga_sync_1.jpg"
+				width="1300" height="850" alt="vga_graph" /></a>
+				</br></br>
+				
+				
+				
+			
+			
+		
+	</p>
+		
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>
+
+

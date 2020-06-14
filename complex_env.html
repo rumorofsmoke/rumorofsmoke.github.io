@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<link href="css/rumor.css" rel="stylesheet" type="text/css" />
+<link href="css/picture.css" rel="stylesheet" type="text/css" />
+<html>
+
+    <head>
+		<style>
+		</style>
+
+			<meta charset="utf-8" />
+
+			<title> RUMOR OF SMOKE | COMPLEX ENV </title>
+
+	</head>
+
+<body id="body">
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="line_text"> <a href="http://electrictonemusic.com">electric tone</a></li>
+			<li class="line_text"><a href="about.html">about</a></li>
+			<li class="line_text"><a href="index.html">index project</a></li>
+			<li class="line_text"><a href="http://smokingtip.wordpress.com/">blob</a></li>
+		</ul>
+	</div>
+	<div id="main_body">
+	<h1 class="line_text">  COMPLEXE ENVELOPE</h1>
+		<p>		
+			
+			This is an envellope rather odd. The hold segments is timed by a timer not a by an external event.
+			another version has been tested with an internally timed delay at the begining. </br></br>
+			
+			Both circuits have a loop switch that make the enveloppe retriggers itself creating a kind of LFO. </br></br>
+			
+			<a 	href="schema/eurorack/complex_env/complex_env.jpg" > <img <img src="schema/eurorack/complex_env/complex_env.jpg" width="450" height="400"  alt="tagomi_0" /></a></br></br>
+			<a 	href="schema/eurorack/complex_env/complex_env_delay.jpg" > <img <img src="schema/eurorack/complex_env/complex_env_delay.jpg" width="450" height="400"  alt="tagomi_0" /></a></br></br>
+				
+			
+			the working is rather simple. Upon receiving a gate at the SET pin of the IC1A (CD4013), Q 
+			output goes high, charging the C3 via D5/POT1/R4. Once the voltage at C3 is above the voltage 
+			set by R3, IC3 goes high and triggers IC4 which delay is set by R15/R4/C8. Once the delay is finished
+			the Q output of IC4 goes low triggering the Reset pin of IC1A. Q output of IC1A goes low, C3 discharges through
+			R4/POT2/D4.</br></br>
+			
+			IC2B is used as a comparator that triggers if the enveloppe voltage goes lower than 0.7V (diode drop). If so, 
+			it retriggers the Set pin of IC1A.</br></br>
+			
+			Changing C3 value for lower value reducing the charging/discharging time of the circuit, it can go well into audio </br></br>
+
+			<a 	href="img/eurorack/complex_env/complex_env.jpg" > <img <img src="img/eurorack/complex_env/complex_env.jpg" width="450" height="400"  alt="comp_env_osc" /></a></br></br>	
+			
+			Overall the circuit is interesting, using different ICs. However, the amount of components can be reduced by
+			using...a microcontroller as always. Purists won't soil their pants as this don't really deals with audio (not that
+			I care)
+			
+			
+			
+			
+			
+	
+		</p>
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>
+
+

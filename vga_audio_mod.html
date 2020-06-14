@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<link href="css/rumor.css" rel="stylesheet" type="text/css" />
+<link href="css/picture.css" rel="stylesheet" type="text/css" />
+<html>
+
+    <head>
+		<style>
+		</style>
+
+			<meta charset="utf-8" />
+
+			<title>RUMOUR OF SMOKE  |  VGA AUDIO MODULATION </title>
+
+	</head>
+
+<body id="body">
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="line_text"> <a href="http://electrictonemusic.com">electric tone</a></li>
+			<li class="line_text"><a href="about.html">about</a></li>
+			<li class="line_text"><a href="index.html">index project</a></li>
+			<li class="line_text"><a href="http://smokingtip.wordpress.com/">blob</a></li>
+		</ul>
+	</div>
+	<div id="main_body">
+	<h1 class="line_text">VGA AUDIO MODULATION</h1>
+	
+		<p>
+		
+		a simple envelope follower that tracks the amplitude of the input signal. A switch allows the user
+		to select two filters or the full bandwith signal to drive the peak detector. </br></br>
+		
+		After the gain stage the signal is AC coupled and biased at 6V for the CD4066 to work properly. Another solution 
+		that I used previously is to power the CD4066 with +6/-6V to avoid the additional biasing. In this case, I find it 
+		simpler to ac coupled the signal. </br></br>
+		
+		The digital circuit on the right controls the switching of the analog switches. I could use pin from the microcontroller but this 
+		will need ribbon cable to connect the board. This solution is more elegant (although requires more components) and make the board self-sufficient
+		for debugging. </br></br>
+		
+		Not represented are the input summer that combined the right and left channel, the input gain selector (the circuit must accomodate 
+		the modular level (10Vpp), line level (~2Vpp), and headphone output (~100mV)), the 1V clipper at the output.</br></br> 
+		
+	
+		</br></br>
+		<a 	href="schema/video_sch/vga_audio/audio_input.png" >
+				<img <img src="schema/video_sch/vga_audio/audio_input.png"
+				width="900" height="500"  alt="audio input" /></a>
+				</br></br>
+		
+	
+		</p>
+			
+			</br></br>
+			</br></br>
+			</br></br>
+		
+			
+				
+				
+					
+		
+			
+			
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<link href="css/rumor.css" rel="stylesheet" type="text/css" />
+<link href="css/picture.css" rel="stylesheet" type="text/css" />
+<html>
+
+    <head>
+		<style>
+		</style>
+
+			<meta charset="utf-8" />
+
+			<title>RUMOR OF SMOKE | Robotnik </title>
+
+	</head>
+
+<body id="body">
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="line_text"> <a href="http://electrictonemusic.com">electric tone</a></li>
+			<li class="line_text"><a href="about.html">about</a></li>
+			<li class="line_text"><a href="index.html">index project</a></li>
+			<li class="line_text"><a href="http://smokingtip.wordpress.com/">blob</a></li>
+		</ul>
+	</div>
+	<div id="main_body">
+	<h1 class="line_text"> ROBOTNIK</h1>
+		<p>		
+
+		
+			Robotnik is a strange eurorack module based on the idea of Linear Feedback Shift Register.<br/><br/>
+			<a 	href="img/eurorack/robotnik/rob_04.jpg" > <img <img src="img/eurorack/robotnik/rob_04.jpg" width="815" height="590"  alt="tagomi_0" /></a>
+			<br/><br/>
+			
+			The top half is externally clocked at low rate and produces pseudo-random output. The length and the bit operation on register are variable. 
+			The operation on the register makes use of the <a href="https://en.wikipedia.org/wiki/Linear-feedback_shift_register">16bit Fibonacci LFSR</a> .
+			The register changes are made via the 7segment display and a knob. It goes from a register length of 4Bit to 16bit, and the sofware changes the tap used for the operation 
+			</br></br>
+				
+			The bottom half has the same principle but is internally clocked at audio rate creating very particular
+			8bit noise sound, largely used in video game console. The less bit in the register the higher the pitch, the more bit the more random 
+			(and noisy) the sound will be. 
+			</br></br>
+			</p>
+			
+			
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/ywhcuFXyM84" frameborder="0" allowfullscreen></iframe>
+			<br/><br/> 
+			<p>
+			There's no much more stuff going on the lower half on the module. The frequency can be modulated by external sources at that's it.</br></br> 
+			
+			On the other hand, the upper half has more internal "random" facilities with clock input, clock divider, 
+			trigger input, and seed input. 	When a trigger is received the 2nd output is replaced by another register of variable length 
+			for one total cycle (for instance, if the register is set to 5bit, it takes 32clocks). Few other things are
+			present that I can't recall without going into the code.</br></br>
+			
+			The electronic part is rather simple as the work is mostly done in software. At the time a ATMEGA328P was used. 
+			BJT transistors are used to triggers the micro pins. CD4050 buffers are used to buffer the microcontroller pins
+			(we're in modular world, don't know what may happen). Some op-amps are here to add and scale voltage
+			before the ADC. To save microcontroller pins, shift registers are used to output the signals </br></br>
+			
+			It turns out that the only 7segments can lead to confusing editing and considering the very nature of the module (randomness) the editing may left someone
+			doubtfull to the change the user juste made. Although short register length can be recognized, longer ones tend to let puzzled.
+			</p>
+			</br></br>
+			<a 	href="img/eurorack/robotnik/rob_01.jpg" > <img <img src="img/eurorack/robotnik/rob_01.jpg" width="380" height="400"  alt="tagomi_0" /></a>
+			<a 	href="img/eurorack/robotnik/rob_02.jpg" > <img <img src="img/eurorack/robotnik/rob_02.jpg" width="380" height="400"  alt="tagomi_0" /></a>
+			</br></br>
+			<p>
+			However, the module is interesting to bring odd rythmic patterns although almost no repeatable due to its higly randomness (which is a thing odd
+			to complaint about when the module was intetend for that very purpose). It is an interesting idea that maybe deserves a better user interface.	
+			</br></br>
+			</p>
+			
+			
+			<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/227047262&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+			<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/213487317&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+			<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/217741510&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+			</br></br>
+			<a  href="schema/eurorack/robotnik/robotnik.pdf"> <strong>SCHEMATIC</strong> </a>.</br></br>
+	
+		</p>
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>
+
+

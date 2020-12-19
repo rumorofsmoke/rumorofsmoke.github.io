@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<link href="css/rumor.css" rel="stylesheet" type="text/css" />
+<link href="css/picture.css" rel="stylesheet" type="text/css" />
+<html>
+
+    <head>
+		<style>
+		</style>
+
+			<meta charset="utf-8" />
+
+			<title>RUMOUR OF SMOKE  | RANDOM AMPLITUDE TREMOLO </title>
+
+	</head>
+
+<body id="body">
+<div id="container">
+	<div id="header">
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="line_text"> <a href="http://electrictonemusic.com">electric tone</a></li>
+			<li class="line_text"><a href="about.html">about</a></li>
+			<li class="line_text"><a href="index.html">index project</a></li>
+			<li class="line_text"><a href="http://smokingtip.wordpress.com/">blob</a></li>
+		</ul>
+	</div>
+	<div id="main_body">
+	<h1 class="line_text"> RANDOM AMPLITUDE TREMOLO </h1>
+	<p>	
+			Basically a tremolo that can mix a regular waveform (square, triangle, saw) with a random signal that goes up and 
+			down in straight line. Another mode allows the recording of a signal to create a waveform. </br></br>
+			
+			<a 	href="img/guitar/rand_tremolo/trem_02.jpg" >
+				<img <img src="img/guitar/rand_tremolo/trem_02.jpg"
+				width="750" height="800" alt="phase_1" /></a>
+				</br></br>
+			
+			The pseudo-random simply gives a fluctuating voltage. there's a morph controls that apply a phase distortion to the waveforms. The square has 
+			a pulse width control, the triangle can produce saw up or saw down waves, the sines produces more soft rounded signal. </br></br>
+			
+			The record mode is a bit more interesting. In this mode the player can record a signal that it is used then as a random waveform. 
+			The processor doesn't record the sound per say, but takes points in the input signal (the sampling rate is rather low) and interpolate between
+			them to create an amplitude signal that will modulate the input signal. </br></br>
+			
+			The circuit uses a spare VTL5C3 optocoupler, due to its slowness the circuit can't go "ring mod" or more extrem modulation.</br></br>
+			
+			The processor used is a STM32f030K6. A cheaper solution to the atmega328 that I used to use. 
+			the added features don't really matter in this application (although DMA is nice for ADC management).</br></br>
+			
+	</p>
+		
+	</div>
+	
+	<div id="footer">
+	</div>
+</div>
+</body>
+</html>
+
+

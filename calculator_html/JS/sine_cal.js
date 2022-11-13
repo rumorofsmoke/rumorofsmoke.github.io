@@ -13,13 +13,23 @@ const TABLE_SIZE=256;
 
 alert('only sine modulator available at the moment !');
 
-
+// don't call things that don't exit ! 
+/*
 var compute_button = document.querySelector(".user_button");
     compute_button.addEventListener("click",calsine); 
-
-var mult_slider  = document.querySelector("#mult_freq"); 
-    mult_slider.addEventListener("input", refresh_slider_value);
-    mult_slider.addEventListener("input", calsine);
+*/
+var     mult_slider  = document.querySelector("#mult_freq"); 
+        mult_slider.addEventListener("input", refresh_slider_value);
+        mult_slider.addEventListener("input", calsine);
+    
+ var    modulated_sel = document.querySelector("#sel_waveform"); 
+        modulated_sel.addEventListener('change',calsine);
+        
+ /*
+  * for next use ! at this point we only use sine modulator 
+ var    modulator_sel = document.querySelector("#sel_modulator"); 
+        modulator_sel.addEventListener('change',calsine);
+*/
     
 //for the function to be call after the page is fully loaded, we use this ! 
 document.addEventListener('DOMContentLoaded', calsine); 
@@ -27,7 +37,7 @@ document.addEventListener('DOMContentLoaded', refresh_slider_value);
     
 var span_slider_mult = document.querySelector("#span_mult_freq"); 
 
-//refresh_slider_value(); 
+refresh_slider_value(); 
 
 
 function refresh_slider_value()
@@ -39,22 +49,21 @@ function calsine()
 {
   var user_modwave = new Array();
   var userwave = new Array();
-  var mult_sinewave =new Array(); 
-  
-  var user_multiplier; 
 
-//retrieve data for computation 
+//retrieve remaining datas for computation 
  var raw_text              = document.querySelector("#txt_raw_data");
- var modulated_waveform     = document.querySelector("#sel_waveform"); 
- var modulator_waveform     = document.querySelector("#sel_modulator_waveform");
-
+ var modulator_waveform    = document.querySelector("#sel_modulator_waveform");
+ 
+ var y_axis = new Array(); 
+ 
+ //reset value to the block text
   raw_text.value =''; 
   
   //create the modulated waveform base ! 
      for (let i=0; i<TABLE_SIZE; i++)
      {
-            //select which waveform we build 
-            switch(modulated_waveform.options[modulated_waveform.selectedIndex].text)
+            //select which waveform we build first
+            switch(modulated_sel.options[modulated_sel.selectedIndex].text)
             {
                 case "SINE":
                 userwave[i] = Math.floor( (Math.sin(i * MULTI_PI_BASE * Math.PI / TABLE_SIZE)+1) * MID_POINT);  
@@ -85,19 +94,17 @@ function calsine()
         user_modwave[i] = Math.floor( (Math.sin(i * mult_slider.value * Math.PI / TABLE_SIZE)+1) * MID_POINT);  
           
        // we need to make a expection if the modulation freq is set 0, in this case we only show the modulated waveform
-       if(mult_slider.value == "0") mult_sinewave[i] = userwave[i];    
-       else                       mult_sinewave[i] = ((userwave[i] * user_modwave[i]) >> 8)+1;  
+       if(mult_slider.value !== "0") userwave[i] = ((userwave[i] * user_modwave[i]) >> 8)+1;  
 
        // write the binary data for export 
-        raw_text.value += mult_sinewave[i].toString() + ", "; 
- 
+        raw_text.value += userwave[i].toString() + ", "; 
+        
+         //as we need to send two arrays to the chart, we create one just for inumeration for the y axis
+        y_axis[i] = i; 
      }
-     //as we need to see two array to the chart, we create one just for inumeration
-     var y_axis = new Array(); 
-     for (let i=0; i<TABLE_SIZE; i++) y_axis[i] = i; 
      
      //we ship the arrays to the charts
-         build_chart(mult_sinewave,y_axis); 
+     build_chart(userwave,y_axis); 
 }
 
 function build_chart(x_axis_set, y_axis_ref)

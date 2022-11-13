@@ -23,22 +23,16 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     <div id="container">
         <div id="top_bar"> <a href="https://rumorofsmoke.github.io/">RumorOfSmoke</a> </div>
         <div id="title_bar"> 
-            <h1> WAVEFORM GENERATOR </h1>
+            <h2> WAVEFORM GENERATOR </h2>
         
         </div>	
         
         <div id="description_block">
             <h2>HOW IT WORKS </h2>
             <p>
-               This calculator creates various wavetables (or arbitary waveforms) to be loaded
-               into an eprom or a micrcocontroller memory. It is used with a DDS type of oscillator.
-               Several adjacent wavetables can be then mixed together to create a continius wavetable 
-                using different types of interpolation between samples. </br></br>
-               
-               At the moment the calculator creates only 8bit/256 samples table but will soon be expanded
-               to other bit-depth.  </br></br>
-               
-                Once you're happy with the resulting waveform, you can copy/paste the raw binary form into your code.</br></br>
+                
+                
+                
             </p>
            
         </div> 
@@ -71,19 +65,23 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                        <th> WAVEFORM </th>    
                    <th>
                        <select id="sel_modulator_waveform "class="sel_form"><option value="SINE">SINE</option>
-                       <option value="TRIANGLE" disabled>TRIANGLE</option>
-                       <option value="SQUARE"disabled>SQUARE</option>
-                       <option value="SAW"disabled>SAW</option>
-                       <option value="NOISE"disabled>NOISE</option>
+                       <option value="TRIANGLE">TRIANGLE</option>
+                       <option value="SQUARE">SQUARE</option>
+                       <option value="SAW">SAW</option>
+                       <option value="NOISE">NOISE</option>
                        </select>    
                    </th>
                     </tr>  
                        <tr>
-                           <th>MULT. FREQ: <span id="span_mult_freq"></th>
+                   <th>MULT. FREQ</th>
                    <th>
-                       <div>
-                            <input type="range" id="mult_freq" name="mult" min="0" max="16" value="60" step="1">
-                        </div>
+                       <select id="sel_modulator_freq" class="sel_form"><option value="2">2</option>
+                           <option value="4">4</option>
+                           <option value="6">6</option>
+                           <option value="8">8</option>
+                           <option value="10">10</option>
+                           <option value="120">120</option>
+                       </select>
                    </th>
                     </tr> 
                     <tr>
@@ -122,7 +120,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
             <textarea id="txt_raw_data"> all the fun will appear here... </textarea>
         </div>   
    <div id="footer"> 
-       <p id="footer_text"> ElectricTone_2022 </p> 
+      <span id="footer_text"> ElectricTone_2022 </span> 
    </div>
      
     

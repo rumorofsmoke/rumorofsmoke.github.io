@@ -8,128 +8,103 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     
   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script> -->
  
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-</script>
-
-     <script type="module" src="JS/sine_cal.js"></script>
-  <!--  <script type="text/javascript" scr="math.min.js"></script> -->
-    <head>  
-    <style></style>
-   </head>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">  </script>
+    <script type="module" src="JS/sine_cal.js"></script>
+ 
+    <head> 
+        <style>
+        </style> 
+         <meta charset="utf-8" />
+       
+	<title> RUMOR OF SMOKE | WAVEFORM GENERATOR </title>
+    </head>  
     
     <body >  
 		
-    <div id="container">
+        <div id="container">
         <div id="top_bar"> <a href="https://rumorofsmoke.github.io/">RumorOfSmoke</a> </div>
         <div id="title_bar"> 
-            <h2> WAVEFORM GENERATOR </h2>
+            <h1> WAVEFORM GENERATOR </h1>
         
         </div>	
         
         <div id="description_block">
             <h2>HOW IT WORKS </h2>
             <p>
-                
-                
-                
+               This calculator creates various wavetables (or arbitary waveforms) to be loaded
+               into an eprom or a micrcocontroller memory. It is used with a DDS type of oscillator.
+               Several adjacent wavetables can be then mixed together to create a continius wavetable 
+               using different types of interpolation between samples. </br></br>
+               
+               At the moment the calculator creates only 8bit/256 samples table but will soon be expanded
+               to other bit-depth.</br></br>
+               
+                Once you're happy with the resulting waveform, you can copy/paste the raw binary form into your code.</br></br>
             </p>
-           
         </div> 
         <div id="table_form"> 
-           
-                <h2 id="table_title">WAVE GENERATOR</h2>
-                <table>
-
-
-                    <h4>MODULATED WAVEFORM</h4>
-
-
-                   <tr>
-                   <th> WAVEFORM </th>    
-                       <th>
-                           <select id="sel_waveform" class="sel_form"><option value="SINE">SINE</option>
-                               <option value="TRIANGLE">TRIANGLE</option>
-                               <option value="SQUARE">SQUARE</option>
-                               <option value="SAW">SAW</option>
-                               <option value="NOISE">NOISE</option>
-                           </select>    
-                       </th>
-                   </tr> 
+            <h2 id="table_title">WAVE GENERATOR</h2>
+            <table>
+                <h4>MODULATED WAVEFORM</h4>
+                <tr>
+                <th> WAVEFORM </th>    
+                    <th>
+                        <select id="sel_waveform" class="sel_form"><option value="SINE">SINE</option>
+                            <option value="TRIANGLE">TRIANGLE</option>
+                            <option value="SQUARE">SQUARE</option>
+                            <option value="SAW">SAW</option>
+                            <option value="NOISE">NOISE</option>
+                        </select>    
+                    </th>
+                </tr> 
                 </table>
-
-                   <h4>MODULATOR WAVEFORM</h4>
-
-                   <table>
+                    <h4>MODULATOR WAVEFORM</h4>
+                <table>
                    <tr>
                        <th> WAVEFORM </th>    
                    <th>
-                       <select id="sel_modulator_waveform "class="sel_form"><option value="SINE">SINE</option>
-                       <option value="TRIANGLE">TRIANGLE</option>
-                       <option value="SQUARE">SQUARE</option>
-                       <option value="SAW">SAW</option>
-                       <option value="NOISE">NOISE</option>
+                       <select id="sel_modulator "class="sel_form"><option value="SINE">SINE</option>
+                       <option value="TRIANGLE" disabled>TRIANGLE</option>
+                       <option value="SQUARE"disabled>SQUARE</option>
+                       <option value="SAW"disabled>SAW</option>
+                       <option value="NOISE"disabled>NOISE</option>
                        </select>    
                    </th>
                     </tr>  
-                       <tr>
-                   <th>MULT. FREQ</th>
+                    <tr>
+                           <th>MULT. FREQ: <span id="span_mult_freq"></th>
                    <th>
-                       <select id="sel_modulator_freq" class="sel_form"><option value="2">2</option>
-                           <option value="4">4</option>
-                           <option value="6">6</option>
-                           <option value="8">8</option>
-                           <option value="10">10</option>
-                           <option value="120">120</option>
-                       </select>
+                       <div>
+                            <input type="range" id="mult_freq" name="mult" min="0" max="16" value="60" step="1">
+                        </div>
                    </th>
                     </tr> 
                     <tr>
                         <th></th>
-                        <th> <button class="user_button" > COMPUTE </button> </tr></th>
+                        <th> <!--<button class="user_button" > COMPUTE </button>--> </th>
+                    </tr>
                 </table>
-
-
-
-           </div>
-        
-
-        
-       
-        
-        
-    
-        
+        </div>  <!-- end of table -->
         <div id="graph_block">
             <!-- <h4>GRAPH</h4> -->
             
             <div id="wrap_chart">
                 <canvas id="myChart" ></canvas>
             </div>
-
-          
         </div>
 
-
-
-            
-            
-        
-         <div id="raw_data">
-              <h4>BINARY FOR EXPORT</h4>
+        <div id="raw_data">
+            <h4>BINARY FOR EXPORT</h4>
             <textarea id="txt_raw_data"> all the fun will appear here... </textarea>
         </div>   
    <div id="footer"> 
-      <span id="footer_text"> ElectricTone_2022 </span> 
+       <p id="footer_text"> ElectricTone_2022 </p> 
    </div>
      
     
-    </div>
+    </div> <!-- end of container -->
 
     </body>  <!-- end of body div --> 
-
- 
-   
 </html>  
 
 

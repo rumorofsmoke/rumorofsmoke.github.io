@@ -5,7 +5,7 @@
 
 #container{
     oveflow: scroll; 
-     background-color:white;
+    background-color:white;
     margin-top:0;
     width:1300px; 
     height:auto; 
@@ -26,7 +26,7 @@
 #top_bar a{
     margin-top: 20px; 
     float:right; 
-   
+    
     margin-right:auto; 	
     list-style-type: none; 	
     font-family: Geneva, sans-serif; 

@@ -18,6 +18,7 @@
 		
 	
 	}
+
 	#menu ul{
   margin:0; 
 	padding:0;
@@ -37,6 +38,11 @@
 	#menu a{
 		text-decoration:none; 
 		color:black ; 
+	}
+
+	.img_link{
+		float:left;
+		text-align:center; 
 	}
 	#main_body{
 	height:auto;
